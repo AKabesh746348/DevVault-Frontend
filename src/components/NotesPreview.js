@@ -29,7 +29,7 @@ const NotesPreview = () => {
     if (!loggedUser) { navigate("/auth"); return; }
     setUser(loggedUser);
 
-    fetch(`https://devvault-flask.onrender.com/code/${loggedUser.username}`)
+    fetch(`https://idyllic-peony-96b09f.netlify.app/${loggedUser.username}`)
       .then(res => res.json())
       .then(data => {
          setFileStructure({
@@ -51,7 +51,7 @@ const NotesPreview = () => {
 
   // --- API CALLS ---
   const apiCreate = (domain, name) => {
-    fetch("https://devvault-flask.onrender.com/code/add", {
+    fetch("https://idyllic-peony-96b09f.netlify.app/code/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: user.username, domain, name, content: "" })
@@ -59,7 +59,7 @@ const NotesPreview = () => {
   };
 
   const apiUpdate = (domain, name, content) => {
-    fetch("https://devvault-flask.onrender.com/code/update", {
+    fetch("https://idyllic-peony-96b09f.netlify.app/code/update", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: user.username, domain, name, content })
@@ -67,7 +67,7 @@ const NotesPreview = () => {
   };
 
   const apiDelete = (domain, name) => {
-    fetch("https://devvault-flask.onrender.com/code/delete", {
+    fetch("https://idyllic-peony-96b09f.netlify.app//code/delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: user.username, domain, name })

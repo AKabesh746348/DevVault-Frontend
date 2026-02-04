@@ -17,7 +17,7 @@ const Auth = () => {
     
     try {
       // USING FETCH INSTEAD OF AXIOS
-      const response = await fetch(`https://devvault-flask.onrender.com${endpoint}`, {
+      const response = await fetch(`https://idyllic-peony-96b09f.netlify.app/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
