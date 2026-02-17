@@ -164,15 +164,38 @@ const NotesPreview = () => {
           </div>
           <div className="card-grid">
             <div className="card card-front" onClick={() => setSelectedDomain("frontend")}>
-              <div className="icon">⚛️</div>
+              <div className="icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                  <path d="M7 8l3 3-3 3" />
+                  <line x1="13" y1="14" x2="17" y2="14" />
+                </svg>
+              </div>
               <h3>Front-End</h3>
             </div>
             <div className="card card-back" onClick={() => setSelectedDomain("backend")}>
-              <div className="icon">🟢</div>
+              <div className="icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" />
+                  <rect x="2" y="14" width="20" height="8" rx="2" />
+                  <circle cx="6" cy="6" r="1" fill="currentColor" />
+                  <circle cx="6" cy="18" r="1" fill="currentColor" />
+                  <line x1="12" y1="6" x2="18" y2="6" />
+                  <line x1="12" y1="18" x2="18" y2="18" />
+                </svg>
+              </div>
               <h3>Back-End</h3>
             </div>
             <div className="card card-db" onClick={() => setSelectedDomain("database")}>
-              <div className="icon">🐬</div>
+              <div className="icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" />
+                  <path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3" />
+                  <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+                </svg>
+              </div>
               <h3>Database</h3>
             </div>
           </div>
