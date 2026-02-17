@@ -29,7 +29,7 @@ const NotesPreview = () => {
     if (!loggedUser) { navigate("/auth"); return; }
     setUser(loggedUser);
 
-    fetch(`http://localhost:5001/code/${loggedUser.username}`)
+    fetch(`https://devvault-backend-production.up.railway.app/code/${loggedUser.username}`)
       .then(res => res.json())
       .then(data => {
         setFileStructure({
@@ -51,7 +51,7 @@ const NotesPreview = () => {
 
   // --- API CALLS ---
   const apiCreate = (domain, name) => {
-    fetch("http://localhost:5001/code/add", {
+    fetch("https://devvault-backend-production.up.railway.app/code/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: user.username, domain, name, content: "" })
@@ -59,7 +59,7 @@ const NotesPreview = () => {
   };
 
   const apiUpdate = (domain, name, content) => {
-    fetch("http://localhost:5001/code/update", {
+    fetch("https://devvault-backend-production.up.railway.app/code/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: user.username, domain, name, content })
@@ -67,7 +67,7 @@ const NotesPreview = () => {
   };
 
   const apiDelete = (domain, name) => {
-    fetch("http://localhost:5001/code/delete", {
+    fetch("https://devvault-backend-production.up.railway.app/code/delete", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: user.username, domain, name })

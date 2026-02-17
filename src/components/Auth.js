@@ -15,7 +15,7 @@ const Auth = () => {
     const endpoint = isSignup ? "/signup" : "/login";
 
     try {
-      const response = await fetch(`http://localhost:5001${endpoint}`, {
+      const response = await fetch(`https://devvault-backend-production.up.railway.app${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
