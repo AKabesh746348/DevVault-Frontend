@@ -7,16 +7,16 @@ const NotesPreview = () => {
   const [user, setUser] = useState({ username: "Guest" });
 
   // View & UI State
-  const [selectedDomain, setSelectedDomain] = useState(null); 
+  const [selectedDomain, setSelectedDomain] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [menuIndex, setMenuIndex] = useState(null);
-  
+
   // --- NEW: NOTIFICATION STATE ---
   const [notification, setNotification] = useState({ show: false, message: "", type: "" });
 
   // Editor State
-  const [activeFileIndex, setActiveFileIndex] = useState(null); 
-  const [currentCode, setCurrentCode] = useState(""); 
+  const [activeFileIndex, setActiveFileIndex] = useState(null);
+  const [currentCode, setCurrentCode] = useState("");
   const [newFileName, setNewFileName] = useState("");
 
   const [fileStructure, setFileStructure] = useState({
@@ -29,14 +29,14 @@ const NotesPreview = () => {
     if (!loggedUser) { navigate("/auth"); return; }
     setUser(loggedUser);
 
-    fetch(`https://idyllic-peony-96b09f.netlify.app/${loggedUser.username}`)
+    fetch(`http://localhost:5001/code/${loggedUser.username}`)
       .then(res => res.json())
       .then(data => {
-         setFileStructure({
-           frontend: data.frontend || [],
-           backend: data.backend || [],
-           database: data.database || []
-         });
+        setFileStructure({
+          frontend: data.frontend || [],
+          backend: data.backend || [],
+          database: data.database || []
+        });
       });
   }, [navigate]);
 
@@ -51,46 +51,46 @@ const NotesPreview = () => {
 
   // --- API CALLS ---
   const apiCreate = (domain, name) => {
-    fetch("https://idyllic-peony-96b09f.netlify.app/code/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: user.username, domain, name, content: "" })
+    fetch("http://localhost:5001/code/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: user.username, domain, name, content: "" })
     });
   };
 
   const apiUpdate = (domain, name, content) => {
-    fetch("https://idyllic-peony-96b09f.netlify.app/code/update", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: user.username, domain, name, content })
+    fetch("http://localhost:5001/code/update", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: user.username, domain, name, content })
     });
   };
 
   const apiDelete = (domain, name) => {
-    fetch("https://idyllic-peony-96b09f.netlify.app//code/delete", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: user.username, domain, name })
+    fetch("http://localhost:5001/code/delete", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: user.username, domain, name })
     });
   };
 
   // --- ACTIONS ---
 
   const handleNewFileClick = () => {
-    setNewFileName(""); 
-    setShowModal(true); 
+    setNewFileName("");
+    setShowModal(true);
   };
 
   const confirmCreateFile = () => {
     if (!newFileName.trim()) return;
     const name = newFileName.trim();
-    
+
     const newFile = { name: name, content: "" };
     const newList = [...fileStructure[selectedDomain], newFile];
     setFileStructure({ ...fileStructure, [selectedDomain]: newList });
-    
+
     apiCreate(selectedDomain, name);
-    
+
     setActiveFileIndex(newList.length - 1);
     setCurrentCode("");
     setShowModal(false);
@@ -103,10 +103,10 @@ const NotesPreview = () => {
     if (activeFileIndex !== null) {
       const updatedList = [...fileStructure[selectedDomain]];
       updatedList[activeFileIndex].content = currentCode;
-      
+
       const fileName = updatedList[activeFileIndex].name;
       setFileStructure({ ...fileStructure, [selectedDomain]: updatedList });
-      
+
       apiUpdate(selectedDomain, fileName, currentCode);
 
       // --- SHOW "UPDATED" MESSAGE ---
@@ -116,19 +116,19 @@ const NotesPreview = () => {
 
   const openFile = (index) => {
     setActiveFileIndex(index);
-    setCurrentCode(fileStructure[selectedDomain][index].content || ""); 
+    setCurrentCode(fileStructure[selectedDomain][index].content || "");
   };
 
   const handleDelete = (e, index) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     const fileToDelete = fileStructure[selectedDomain][index];
-    
+
     const updatedList = fileStructure[selectedDomain].filter((_, i) => i !== index);
     setFileStructure({ ...fileStructure, [selectedDomain]: updatedList });
 
     apiDelete(selectedDomain, fileToDelete.name);
-    
-    setMenuIndex(null); 
+
+    setMenuIndex(null);
     if (activeFileIndex === index) {
       setActiveFileIndex(null);
       setCurrentCode("");
@@ -148,12 +148,12 @@ const NotesPreview = () => {
 
       <div className="top-bar">
         <div className="brand">
-           <div className="logo">{`{ }`}</div>
-           <span>DevVault</span>
+          <div className="logo">{`{ }`}</div>
+          <span>DevVault</span>
         </div>
         <div className="profile">
           <div className="user-badge">{user.username}</div>
-          <button onClick={() => {localStorage.clear(); navigate("/");}}>Logout</button>
+          <button onClick={() => { localStorage.clear(); navigate("/"); }}>Logout</button>
         </div>
       </div>
 
@@ -189,8 +189,8 @@ const NotesPreview = () => {
 
             <div className="file-list">
               {fileStructure[selectedDomain].map((file, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className={`file-item ${activeFileIndex === i ? "active" : ""}`}
                   onClick={() => openFile(i)}
                 >
@@ -215,12 +215,12 @@ const NotesPreview = () => {
             {activeFileIndex !== null ? (
               <>
                 <div className="window-bar">
-                   <div className="dots"><span></span><span></span><span></span></div>
-                   <div className="file-label">{fileStructure[selectedDomain][activeFileIndex].name}</div>
-                   <button className="save-btn" onClick={handleSave}>💾 Save</button>
+                  <div className="dots"><span></span><span></span><span></span></div>
+                  <div className="file-label">{fileStructure[selectedDomain][activeFileIndex].name}</div>
+                  <button className="save-btn" onClick={handleSave}>💾 Save</button>
                 </div>
-                <textarea 
-                  placeholder="// Write your code here..." 
+                <textarea
+                  placeholder="// Write your code here..."
                   spellCheck="false"
                   value={currentCode}
                   onChange={(e) => setCurrentCode(e.target.value)}
@@ -239,7 +239,7 @@ const NotesPreview = () => {
         <div className="modal-overlay">
           <div className="modal">
             <h3>Name Your File</h3>
-            <input 
+            <input
               autoFocus type="text" placeholder="e.g. index.js"
               value={newFileName} onChange={(e) => setNewFileName(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && confirmCreateFile()}

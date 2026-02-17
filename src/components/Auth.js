@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// NO AXIOS IMPORT NEEDED
 import "../styles/Auth.scss";
 
 const Auth = () => {
@@ -14,10 +13,9 @@ const Auth = () => {
   const handleAuth = async () => {
     setError("");
     const endpoint = isSignup ? "/signup" : "/login";
-    
+
     try {
-      // USING FETCH INSTEAD OF AXIOS
-      const response = await fetch(`https://idyllic-peony-96b09f.netlify.app/${endpoint}`, {
+      const response = await fetch(`http://localhost:5001${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -46,34 +44,37 @@ const Auth = () => {
       <div className="auth-container">
         <div className="auth-visuals">
           <div className="code-window">
-             <div className="window-header">
-                <div className="dots"><span className="red"></span><span className="yellow"></span><span className="green"></span></div>
-             </div>
-             <div className="code-area">
-               <pre><code>// Secure Login<br/>Auth.authenticate(user);<span className="cursor">|</span></code></pre>
-             </div>
+            <div className="window-header">
+              <div className="dots">
+                <span className="red"></span>
+                <span className="yellow"></span>
+                <span className="green"></span>
+              </div>
+            </div>
+            <div className="code-area">
+              <pre><code><br />              Cloud Based<br /><br />                Notepad<span className="cursor">|</span></code></pre>
+            </div>
           </div>
           <div className="visual-text">
-             <h2>{isSignup ? "Join the Vault" : "Welcome Back"}</h2>
+            <h2>{isSignup ? "Join the Vault" : "Welcome Back"}</h2>
+            <p>Your cloud workspace for code snippets</p>
           </div>
         </div>
-
-
 
         <div className="auth-form-side">
           <div className="form-content">
             <h2>{isSignup ? "Create Account" : "Login"}</h2>
-            {error && <div className="auth-error" style={{color: '#f87171', marginBottom: '10px'}}>{error}</div>}
-            
-            <input type="text" name="username" placeholder="Username" onChange={handleChange}/>
-            <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
-            
+            {error && <div className="auth-error">{error}</div>}
+
+            <input type="text" name="username" placeholder="Username" onChange={handleChange} />
+            <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+
             <button className="auth-btn" onClick={handleAuth}>
               {isSignup ? "Sign Up" : "Login"}
             </button>
-            
-            <p className="toggle-text" onClick={() => setIsSignup(!isSignup)} style={{marginTop: '20px', cursor: 'pointer', color: '#94a3b8'}}>
-               {isSignup ? "Already have an account? Login" : "New here? Create Account"}
+
+            <p className="toggle-text" onClick={() => setIsSignup(!isSignup)}>
+              {isSignup ? "Already have an account? Login" : "New here? Create Account"}
             </p>
           </div>
         </div>
