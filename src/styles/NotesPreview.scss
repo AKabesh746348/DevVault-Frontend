@@ -677,3 +677,390 @@
     transform: scale(1) translateY(0);
   }
 }
+
+// ═══════════════════════════════════════
+// ─── TABLET ≤ 768px ───
+// ═══════════════════════════════════════
+@media (max-width: 768px) {
+  .main-layout {
+    padding: 10px;
+
+    // Top bar
+    .top-bar {
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+
+      .brand {
+        gap: 8px;
+        font-size: 1rem;
+
+        .logo {
+          font-size: 0.8rem;
+          padding: 5px 8px;
+          border-radius: 6px;
+        }
+      }
+
+      .profile {
+        gap: 8px;
+
+        .user-badge {
+          font-size: 0.78rem;
+          padding: 5px 12px;
+        }
+
+        button {
+          padding: 6px 12px;
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    // Dashboard
+    .dashboard-view {
+      .header {
+        margin-bottom: 2rem;
+
+        h2 {
+          font-size: 1.7rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+
+      .card-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+
+        .card {
+          width: 180px;
+          height: 200px;
+
+          .icon {
+            font-size: 2.2rem;
+          }
+
+          h3 {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    // Editor
+    .editor-view {
+      flex-direction: column;
+      gap: 12px;
+
+      .sidebar {
+        width: 100%;
+        max-height: 200px;
+        border-radius: 14px;
+        padding: 1rem;
+
+        .sidebar-header {
+          margin-bottom: 0.75rem;
+          padding-bottom: 0.75rem;
+        }
+
+        .file-list {
+          overflow-y: auto;
+        }
+
+        .add-btn {
+          margin-top: 0.75rem;
+          padding: 10px;
+          font-size: 0.8rem;
+        }
+      }
+
+      .canvas {
+        border-radius: 14px;
+        padding: 1rem;
+
+        .window-bar {
+          .file-label {
+            font-size: 0.8rem;
+          }
+
+          .save-btn {
+            padding: 7px 16px;
+            font-size: 0.75rem;
+          }
+        }
+
+        textarea {
+          font-size: 0.85rem;
+          line-height: 1.7;
+        }
+      }
+    }
+
+    // Modal
+    .modal-overlay {
+      .modal {
+        width: 340px;
+        padding: 1.5rem;
+        border-radius: 16px;
+
+        h3 {
+          font-size: 1.15rem;
+          margin-bottom: 1.2rem;
+        }
+
+        input {
+          padding: 10px 14px;
+          font-size: 0.85rem;
+        }
+
+        .actions button {
+          padding: 9px 18px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    // Toast
+    .notification-toast {
+      padding: 10px 20px;
+      border-radius: 12px;
+
+      .toast-msg {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// ═══════════════════════════════════════
+// ─── PHONE ≤ 480px ───
+// ═══════════════════════════════════════
+@media (max-width: 480px) {
+  .main-layout {
+    padding: 8px;
+
+    // Top bar
+    .top-bar {
+      height: 44px;
+      padding: 0 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+
+      .brand {
+        gap: 6px;
+
+        .logo {
+          font-size: 0.75rem;
+          padding: 4px 7px;
+        }
+
+        span {
+          font-size: 0.9rem;
+        }
+      }
+
+      .profile {
+        gap: 6px;
+
+        .user-badge {
+          font-size: 0.72rem;
+          padding: 4px 10px;
+          border-radius: 14px;
+        }
+
+        button {
+          padding: 5px 10px;
+          font-size: 0.7rem;
+          border-radius: 6px;
+        }
+      }
+    }
+
+    // Dashboard
+    .dashboard-view {
+      .header {
+        margin-bottom: 1.5rem;
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-size: 0.82rem;
+        }
+      }
+
+      .card-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+
+        .card {
+          width: 85%;
+          max-width: 260px;
+          height: 140px;
+          border-radius: 16px;
+          flex-direction: row;
+          gap: 1rem;
+          padding: 0 1.5rem;
+
+          .icon {
+            font-size: 2rem;
+            margin-bottom: 0;
+          }
+
+          h3 {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    // Editor
+    .editor-view {
+      gap: 8px;
+
+      .sidebar {
+        max-height: 160px;
+        padding: 0.75rem;
+        border-radius: 12px;
+
+        .sidebar-header {
+          margin-bottom: 0.5rem;
+          padding-bottom: 0.5rem;
+          gap: 8px;
+
+          .back-btn {
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+            border-radius: 8px;
+          }
+
+          .title {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+          }
+        }
+
+        .file-list {
+          .file-item {
+            padding: 8px 10px;
+            font-size: 0.8rem;
+
+            .file-icon {
+              font-size: 0.8rem;
+            }
+
+            .name {
+              margin-left: 8px;
+            }
+          }
+        }
+
+        .add-btn {
+          margin-top: 0.5rem;
+          padding: 8px;
+          font-size: 0.78rem;
+          border-radius: 8px;
+        }
+      }
+
+      .canvas {
+        padding: 0.75rem;
+        border-radius: 12px;
+
+        .window-bar {
+          margin-bottom: 0.75rem;
+          padding-bottom: 8px;
+
+          .dots span {
+            width: 10px;
+            height: 10px;
+          }
+
+          .file-label {
+            margin-left: 10px;
+            font-size: 0.75rem;
+          }
+
+          .save-btn {
+            padding: 6px 12px;
+            font-size: 0.72rem;
+            border-radius: 6px;
+          }
+        }
+
+        textarea {
+          font-size: 0.8rem;
+          line-height: 1.6;
+        }
+
+        .no-file-selected {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    // Modal
+    .modal-overlay {
+      .modal {
+        width: 92vw;
+        max-width: 340px;
+        padding: 1.25rem;
+        border-radius: 14px;
+
+        h3 {
+          font-size: 1.05rem;
+          margin-bottom: 1rem;
+        }
+
+        input {
+          padding: 10px 12px;
+          font-size: 0.82rem;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+
+        .actions {
+          gap: 8px;
+
+          button {
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+
+    // Toast
+    .notification-toast {
+      left: 8px;
+      right: 8px;
+      bottom: 16px;
+      transform: translateX(0) translateY(100px);
+      width: auto;
+      padding: 10px 16px;
+      border-radius: 10px;
+
+      &.show {
+        transform: translateX(0) translateY(0);
+      }
+
+      .toast-icon {
+        font-size: 1rem;
+      }
+
+      .toast-msg {
+        font-size: 0.78rem;
+        white-space: normal;
+      }
+    }
+  }
+}

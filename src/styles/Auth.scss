@@ -219,15 +219,110 @@
   }
 }
 
-// Responsive
-@media (max-width: 900px) {
+// ─── TABLET ≤ 768px ───
+@media (max-width: 768px) {
   .auth-page {
-    .auth-container {
-      flex-direction: column; height: auto; width: 95%; max-width: 460px;
+    .brand-header {
+      top: 20px;
+      left: 24px;
+
+      .logo-icon {
+        font-size: 0.95rem;
+        padding: 6px 10px;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
     }
-    .auth-visuals { display: none !important; }
-    .auth-form-side { padding: 2.5rem 1.5rem; }
-    .brand-header { top: 20px; left: 20px; }
+
+    .auth-container {
+      flex-direction: column;
+      height: auto;
+      width: 92%;
+      max-width: 460px;
+      border-radius: 20px;
+    }
+
+    .auth-visuals {
+      display: none !important;
+    }
+
+    .auth-form-side {
+      padding: 2.5rem 2rem;
+
+      .form-content {
+        max-width: 100%;
+
+        h2 {
+          font-size: 1.7rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+// ─── PHONE ≤ 480px ───
+@media (max-width: 480px) {
+  .auth-page {
+    .brand-header {
+      top: 16px;
+      left: 16px;
+      gap: 8px;
+
+      .logo-icon {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+        border-radius: 8px;
+      }
+
+      .logo-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    .auth-container {
+      width: 95%;
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5);
+    }
+
+    .auth-form-side {
+      padding: 2rem 1.25rem;
+
+      .form-content {
+        h2 {
+          font-size: 1.4rem;
+          margin-bottom: 1.2rem;
+        }
+
+        input {
+          padding: 12px 14px;
+          font-size: 0.9rem;
+          border-radius: 10px;
+          margin-bottom: 0.75rem;
+        }
+
+        .auth-btn {
+          padding: 12px;
+          font-size: 0.9rem;
+          border-radius: 10px;
+        }
+
+        .toggle-text {
+          font-size: 0.82rem;
+          margin-top: 1.2rem;
+        }
+
+        .auth-error {
+          font-size: 0.82rem;
+          padding: 10px 14px;
+          border-radius: 10px;
+        }
+      }
+    }
   }
 }
 
